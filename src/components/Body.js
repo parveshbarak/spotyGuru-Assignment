@@ -8,19 +8,16 @@ const Body = () => {
   const [loading, setLoading] = useState(false)
 
   const [country, setCountry] = useState('')
-
   const showList = async (e) => {
     e.preventDefault()
     if (!country) {
-      alert('Invalid search');
-      return;
+      alert('Invalid search')
+      return
     }
     try {
       setLoading(true)
       setUniversities([])
-      const data = await axios.get(
-        `http://universities.hipolabs.com/search?country=${country}`
-      )
+      const data = await axios.get(`/search?country=${country}`)
       setUniversities(data.data)
       setLoading(false)
     } catch (err) {
